@@ -9,7 +9,7 @@ case "$METHOD" in
     PASSWORD="$4"
       # Guardamos a un fichero los valores USERNAME y PASSWORD.
       echo 3600 0 0
-      echo "$3 $4" >> /etc/nodogsplash/contraseñas.txt
+      echo "$3 $4" >> /etc/nodogsplash/passwords.txt
       exit 0
 
 
