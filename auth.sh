@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# IMPORTANTE -->  Necesario capturar el handsahke con el que poder realizar la
+# IMPORTANTE -->  Necesario capturar el handshake con el que poder realizar la
 #                 verificacion de que la contraseña metida sea la correcta.
 
 
