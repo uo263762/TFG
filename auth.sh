@@ -5,7 +5,7 @@
 
 
 
-HANDSAHKE="/home/uo263762/handshake.cap"
+HANDSHAKE="/home/uo263762/handshake.cap"
 AP_MAC="A4:98:13:5B:64:E9"
 PASSWORD_FILE="password.lst"
 
